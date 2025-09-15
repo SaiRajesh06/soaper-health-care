@@ -1,0 +1,80 @@
+{
+  "expo": {
+    "name": "EMRPatientApp",
+    "slug": "EMRPatientApp",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "scheme": "soaperemr",   // Add this line
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.emrpatient.app",
+      "associatedDomains": ["applinks:soaperemr"]  // Add this line
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.emrpatient.app",
+      "permissions": [
+        "android.permission.CAMERA",
+        "android.permission.RECORD_AUDIO"
+      ],
+      "intentFilters": [   // Add this block
+        {
+          "action": "VIEW",
+          "data": [
+            {
+              "scheme": "soaperemr"
+            }
+          ],
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
+      ]
+    },
+    // Remove the plugins entry for expo-linking
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "permissions": [
+            "Allow $(PRODUCT_NAME) to access your camera to scan insurance cards."
+          ]
+        }
+      ],
+      [
+        "@stripe/stripe-react-native",
+        {
+          "merchantIdentifier": "merchant.soaper.EMR",
+          "enableGooglePay": true
+        }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification-icon.png",
+          "color": "#ffffff",
+          "androidMode": "default",
+          "androidCollapsedTitle": "#{unread_notifications} new messages",
+          "iosDisplayInForeground": true
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "8c0e3d4c-8ec8-4078-8af8-8ed52eeb98b7"
+      }
+    },
+    "owner": "lingzhou125"
+  }
+}
